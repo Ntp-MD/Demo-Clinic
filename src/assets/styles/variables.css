@@ -1,0 +1,68 @@
+:root {
+  /* Colors Theme — use in background-color property */
+  --main-color-1: #faf8f6;
+  --main-color-2: #f0ebe5;
+  --main-color-3: #e8dfd6;
+  --main-color-4: #c9b8a8;
+
+  /* Colors Font — use in color property */
+  --font-color-white: #ffffff;
+  --font-color1: #2c2420;
+  --font-color2: #6b5b52;
+  --font-color3: #a08878;
+
+  /* Colors Accent — use in button, link, highlights */
+  --accent-base: #b89a84;
+  --accent-primary: #9c7b62;
+  --accent-secondary: #d4b8a0;
+  --accent-success: #7a9e7e;
+  --accent-warning: #c9a04a;
+  --accent-error: #c0605a;
+
+  /* Font Families */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Font Sizes — clamp responsive, no em/rem */
+  --font-xs: clamp(12px, 0.5vw, 14px);
+  --font-sm: clamp(14px, 1.5vw, 16px);
+  --font-md: clamp(16px, 2vw, 18px);
+  --font-lg: clamp(18px, 2.5vw, 20px);
+  --font-xl: clamp(20px, 3vw, 24px);
+  --font-2xl: clamp(28px, 4vw, 40px);
+  --font-3xl: clamp(38px, 6vw, 64px);
+  --font-4xl: clamp(48px, 8vw, 88px);
+
+  /* Spacing — use in margin, padding, gap */
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 20px;
+  --spacing-lg: 30px;
+  --spacing-xl: 50px;
+  --spacing-2xl: 80px;
+  --spacing-section: clamp(60px, 8vw, 140px);
+
+  /* Border Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 15px;
+  --radius-lg: 20px;
+  --radius-xl: 30px;
+  --radius-pill: 100px;
+  --radius-circle: 50%;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(44, 36, 32, 0.06);
+  --shadow-sm: 0 2px 8px rgba(44, 36, 32, 0.08);
+  --shadow-md: 0 4px 20px rgba(44, 36, 32, 0.1);
+  --shadow-lg: 0 10px 40px rgba(44, 36, 32, 0.12);
+  --shadow-xl: 0 20px 60px rgba(44, 36, 32, 0.15);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Header height reference */
+  --header-height: 72px;
+}
