@@ -31,6 +31,9 @@ yarn-error.log*
 # Test coverage
 coverage/
 
+# Custom files
+codex-mod
+
 # Package manager lock files (keep one based on your preference)
 # package-lock.json
 # yarn.lock
