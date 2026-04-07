@@ -3,7 +3,6 @@
   "outputDirectory": "dist",
   "installCommand": "npm install --prefer-offline --no-audit",
   "framework": "vite",
-  "functions": {},
   "routes": [
     {
       "src": "/(.*)",
