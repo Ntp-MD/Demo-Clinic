@@ -1,4 +1,9 @@
 {
-  "files": [],
-  "references": [{ "path": "./tsconfig.app.json" }]
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "types": [],
+    "skipLibCheck": true,
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "exclude": ["node_modules", ".output", "dist"]
 }
