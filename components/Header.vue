@@ -30,28 +30,28 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useSmoothScroll } from '~/composables/useSmoothScroll'
+import { ref } from "vue";
+import { useSmoothScroll } from "~/composables/useSmoothScroll";
 
-const menuOpen = ref(false)
-const { isScrolled, scrollToElement } = useSmoothScroll()
+const menuOpen = ref(false);
+const { isScrolled, scrollToElement } = useSmoothScroll();
 
 const navItems = [
-  { id: 'services', label: 'Services' },
-  { id: 'about', label: 'About Us' },
-  { id: 'treatments', label: 'Treatments' },
-  { id: 'testimonials', label: 'Reviews' },
-  { id: 'booking', label: 'Contact' },
-]
+  { id: "services", label: "Services" },
+  { id: "about", label: "About Us" },
+  { id: "treatments", label: "Treatments" },
+  { id: "testimonials", label: "Reviews" },
+  { id: "booking", label: "Contact" },
+];
 
 const closeMenu = () => {
-  menuOpen.value = false
-}
+  menuOpen.value = false;
+};
 
 const handleNavClick = (targetId: string) => {
-  closeMenu()
-  scrollToElement(targetId)
-}
+  closeMenu();
+  scrollToElement(targetId);
+};
 </script>
 
 <style scoped>
@@ -222,7 +222,7 @@ const handleNavClick = (targetId: string) => {
     padding: var(--spacing-lg);
     gap: var(--spacing-md);
     box-shadow: var(--shadow-md);
-    transform: translateX(-100vw);
+    transform: translateX(-105%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     height: 80vh;
     z-index: 9;
