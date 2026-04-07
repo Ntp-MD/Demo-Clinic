@@ -80,21 +80,21 @@
 
 <script setup lang="ts">
 const stats = [
-  { value: '8,000+', label: 'Clients Served' },
-  { value: '30+', label: 'Treatments' },
-  { value: '12+', label: 'Specialists' },
-  { value: '99%', label: 'Satisfaction' },
-]
+  { value: "8,000+", label: "Clients Served" },
+  { value: "30+", label: "Treatments" },
+  { value: "12+", label: "Specialists" },
+  { value: "99%", label: "Satisfaction" },
+];
 
 const trustItems = [
-  { icon: '✓', label: 'Board-Certified Doctors' },
-  { icon: '✓', label: 'FDA-Approved Procedures' },
-  { icon: '✓', label: 'Free Consultation' },
-]
+  { icon: "✓", label: "Board-Certified Doctors" },
+  { icon: "✓", label: "FDA-Approved Procedures" },
+  { icon: "✓", label: "Free Consultation" },
+];
 
 function scrollTo(id: string) {
-  const el = document.getElementById(id)
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
 }
 </script>
 
@@ -252,9 +252,15 @@ function scrollTo(id: string) {
   border-radius: var(--radius-circle);
 }
 
-.hero__card-dot--green { background-color: var(--accent-success); }
-.hero__card-dot--pink  { background-color: var(--accent-secondary); }
-.hero__card-dot--yellow { background-color: var(--accent-warning); }
+.hero__card-dot--green {
+  background-color: var(--accent-success);
+}
+.hero__card-dot--pink {
+  background-color: var(--accent-secondary);
+}
+.hero__card-dot--yellow {
+  background-color: var(--accent-warning);
+}
 
 .hero__card-body {
   display: flex;
@@ -325,13 +331,13 @@ function scrollTo(id: string) {
 }
 
 .hero__badge--rating {
-  top: var(--spacing-lg);
-  right: -20px;
+  top: 20%;
+  right: -40px;
 }
 
 .hero__badge--years {
-  bottom: var(--spacing-xl);
-  left: -20px;
+  bottom: 20%;
+  left: -40px;
 }
 
 .hero__badge-stars {
@@ -399,17 +405,36 @@ function scrollTo(id: string) {
     text-align: center;
   }
 
-  .hero__content { max-width: 100%; }
-  .hero__desc { max-width: 100%; margin-left: auto; margin-right: auto; }
-  .hero__actions { justify-content: center; }
-  .hero__trust { align-items: center; }
-  .hero__card-stack { max-width: 100%; margin: 0 auto; }
-  .hero__stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero__content {
+    max-width: 100%;
+  }
+  .hero__desc {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero__actions {
+    justify-content: center;
+  }
+  .hero__trust {
+    align-items: center;
+  }
+  .hero__card-stack {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .hero__stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 600px) {
-  .hero__badge--rating { right: 0; top: var(--spacing-md); }
-  .hero__badge--years { left: 0; }
-  .hero__stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero__badge {
+    position: unset;
+    margin: 20px 0;
+  }
+  .hero__stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>
