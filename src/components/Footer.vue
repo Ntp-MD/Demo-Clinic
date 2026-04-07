@@ -4,21 +4,19 @@
       <div class="container footer__top-inner">
         <div class="footer__brand">
           <a href="#home" class="footer__logo" @click.prevent="scrollTo('home')">
-            <span class="footer__logo-mark">✦</span>
-            <span class="footer__logo-name">Lumière</span>
+            <div class="footer__logo-icon">
+              <span class="footer__logo-leaf">✿</span>
+            </div>
+            <div class="footer__logo-text">
+              <span class="footer__logo-name">Demo</span>
+              <span class="footer__logo-sub">Clinic</span>
+            </div>
           </a>
           <p class="footer__brand-desc">
-            Premium aesthetic medicine combining science and artistry
-            to enhance your natural beauty with confidence and care.
+            Holistic medical wellness and advanced aesthetic care, guided by evidence and delivered with genuine compassion since 2012.
           </p>
           <div class="footer__socials">
-            <a
-              v-for="social in socials"
-              :key="social.label"
-              :href="social.href"
-              class="footer__social-link"
-              :aria-label="social.label"
-            >
+            <a v-for="social in socials" :key="social.label" :href="social.href" class="footer__social-link" :aria-label="social.label">
               {{ social.icon }}
             </a>
           </div>
@@ -37,11 +35,7 @@
           <h4 class="footer__col-title">Clinic</h4>
           <ul class="footer__col-list">
             <li v-for="item in clinicLinks" :key="item.label">
-              <a
-                :href="`#${item.id}`"
-                class="footer__col-link"
-                @click.prevent="scrollTo(item.id)"
-              >{{ item.label }}</a>
+              <a :href="`#${item.id}`" class="footer__col-link" @click.prevent="scrollTo(item.id)">{{ item.label }}</a>
             </li>
           </ul>
         </div>
@@ -60,9 +54,7 @@
 
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
-        <p class="footer__copy">
-          © {{ currentYear }} Lumière Aesthetic Clinic. All rights reserved.
-        </p>
+        <p class="footer__copy">© {{ currentYear }} Demo Clinic. All rights reserved.</p>
         <div class="footer__legal">
           <a href="#" class="footer__legal-link">Privacy Policy</a>
           <span class="footer__legal-sep">·</span>
@@ -76,42 +68,42 @@
 </template>
 
 <script setup lang="ts">
-const currentYear = new Date().getFullYear()
+const currentYear = new Date().getFullYear();
 
 const socials = [
-  { label: 'Instagram', icon: '📸', href: '#' },
-  { label: 'Facebook', icon: '💙', href: '#' },
-  { label: 'LINE', icon: '💬', href: '#' },
-  { label: 'TikTok', icon: '🎵', href: '#' }
-]
+  { label: "Instagram", icon: "📸", href: "#" },
+  { label: "Facebook", icon: "💙", href: "#" },
+  { label: "LINE", icon: "💬", href: "#" },
+  { label: "TikTok", icon: "🎵", href: "#" },
+];
 
 const serviceLinks = [
-  'Skin Rejuvenation',
-  'Injectable Treatments',
-  'Laser & Light',
-  'Body Contouring',
-  'Anti-Aging Therapy',
-  'Wellness & Spa'
-]
+  "Skin Health & Rejuvenation",
+  "Injectable Aesthetics",
+  "Laser & Energy Therapy",
+  "Regenerative Medicine",
+  "Body Contouring",
+  "Holistic Wellness",
+];
 
 const clinicLinks = [
-  { id: 'about', label: 'About Us' },
-  { id: 'treatments', label: 'Treatments' },
-  { id: 'testimonials', label: 'Reviews' },
-  { id: 'booking', label: 'Book Appointment' },
-  { id: 'booking', label: 'Contact Us' }
-]
+  { id: "about", label: "About Us" },
+  { id: "treatments", label: "Treatments" },
+  { id: "testimonials", label: "Client Reviews" },
+  { id: "booking", label: "Book Appointment" },
+  { id: "booking", label: "Contact Us" },
+];
 
 const contactInfo = [
-  { icon: '📍', label: 'Address', value: '88 Sukhumvit Soi 11, Watthana, Bangkok 10110' },
-  { icon: '📞', label: 'Phone', value: '+66 2 123 4567' },
-  { icon: '✉️', label: 'Email', value: 'hello@lumiere-clinic.com' },
-  { icon: '🕐', label: 'Hours', value: 'Mon–Fri 9:00–20:00' }
-]
+  { icon: "📍", label: "Address", value: "42 Rama IX Rd, Huai Khwang, Bangkok 10310" },
+  { icon: "📞", label: "Phone", value: "+66 0 000 000" },
+  { icon: "✉️", label: "Email", value: "contact@Demo-clinic.com" },
+  { icon: "🕐", label: "Hours", value: "Mon–Fri 9:00–20:00" },
+];
 
 function scrollTo(id: string) {
-  const el = document.getElementById(id)
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
 }
 </script>
 
@@ -136,28 +128,55 @@ function scrollTo(id: string) {
 .footer__logo {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-sm);
   margin-bottom: var(--spacing-md);
   text-decoration: none;
 }
 
-.footer__logo-mark {
-  font-size: var(--font-xl);
-  color: var(--accent-secondary);
+.footer__logo-icon {
+  width: 36px;
+  height: 36px;
+  background-color: var(--accent-primary);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.footer__logo-leaf {
+  font-size: var(--font-md);
+  color: var(--font-color-white);
+  line-height: 1;
+}
+
+.footer__logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
 }
 
 .footer__logo-name {
   font-family: var(--font-display);
-  font-size: var(--font-xl);
-  font-weight: 500;
+  font-size: var(--font-lg);
+  font-weight: 700;
   color: var(--font-color-white);
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+}
+
+.footer__logo-sub {
+  font-family: var(--font-body);
+  font-size: var(--font-xs);
+  font-weight: 400;
+  color: var(--accent-base);
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .footer__brand-desc {
   font-size: var(--font-sm);
   color: rgba(255, 255, 255, 0.6);
-  line-height: 1.7;
+  line-height: 1.75;
   margin-bottom: var(--spacing-lg);
 }
 
@@ -174,8 +193,10 @@ function scrollTo(id: string) {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-lg);
-  transition: background-color var(--transition-normal), transform var(--transition-normal);
+  font-size: var(--font-md);
+  transition:
+    background-color var(--transition-normal),
+    transform var(--transition-normal);
   text-decoration: none;
 }
 
@@ -190,7 +211,7 @@ function scrollTo(id: string) {
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--accent-secondary);
+  color: var(--accent-base);
   margin-bottom: var(--spacing-lg);
 }
 
@@ -203,7 +224,7 @@ function scrollTo(id: string) {
 
 .footer__col-link {
   font-size: var(--font-sm);
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.55);
   text-decoration: none;
   transition: color var(--transition-normal);
 }
@@ -221,8 +242,8 @@ function scrollTo(id: string) {
   align-items: flex-start;
   gap: var(--spacing-sm);
   font-size: var(--font-sm);
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.55;
 }
 
 .footer__contact-icon {
@@ -247,7 +268,7 @@ function scrollTo(id: string) {
 
 .footer__copy {
   font-size: var(--font-xs);
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.35);
 }
 
 .footer__legal {
@@ -258,7 +279,7 @@ function scrollTo(id: string) {
 
 .footer__legal-link {
   font-size: var(--font-xs);
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.35);
   text-decoration: none;
   transition: color var(--transition-normal);
 }

@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1260px;
   margin-left: auto;
   margin-right: auto;
   padding-left: var(--spacing-lg);
@@ -8,7 +8,7 @@
 }
 
 .container--narrow {
-  max-width: 860px;
+  max-width: 820px;
 }
 
 .section {
@@ -17,30 +17,41 @@
 }
 
 .section-label {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
   font-family: var(--font-body);
   font-size: var(--font-xs);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--accent-primary);
   margin-bottom: var(--spacing-md);
 }
 
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
 .section-title {
   font-family: var(--font-display);
   font-size: var(--font-3xl);
-  font-weight: 400;
+  font-weight: 600;
   color: var(--font-color1);
-  line-height: 1.15;
+  line-height: 1.18;
   margin-bottom: var(--spacing-md);
 }
 
 .section-subtitle {
   font-size: var(--font-md);
   color: var(--font-color2);
-  max-width: 560px;
-  line-height: 1.7;
+  max-width: 540px;
+  line-height: 1.75;
 }
 
 .btn {
@@ -51,11 +62,12 @@
   padding: 14px var(--spacing-xl);
   font-size: var(--font-sm);
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   border-radius: var(--radius-pill);
   cursor: pointer;
   transition: all var(--transition-normal);
   white-space: nowrap;
+  width: fit-content;
 }
 
 .btn--primary {
@@ -96,7 +108,9 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
-  transition: box-shadow var(--transition-normal), transform var(--transition-normal);
+  transition:
+    box-shadow var(--transition-normal),
+    transform var(--transition-normal);
 }
 
 .card:hover {
@@ -105,10 +119,11 @@
 }
 
 .divider {
-  width: 60px;
-  height: 1px;
-  background-color: var(--accent-primary);
+  width: 48px;
+  height: 2px;
+  background-color: var(--accent-secondary);
   margin-bottom: var(--spacing-md);
+  border-radius: var(--radius-xs);
 }
 
 .divider--center {
@@ -123,6 +138,10 @@
 .text-center .section-subtitle {
   margin-left: auto;
   margin-right: auto;
+}
+
+.text-center .section-label {
+  justify-content: center;
 }
 
 .accent-color {

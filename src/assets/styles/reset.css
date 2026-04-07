@@ -16,15 +16,20 @@ body {
   font-size: var(--font-md);
   color: var(--font-color1);
   background-color: var(--main-color-1);
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.2;
   color: var(--font-color1);
 }
@@ -32,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 p {
   font-family: var(--font-body);
   color: var(--font-color2);
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 a {
@@ -55,7 +60,8 @@ img {
   display: block;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 

@@ -2,12 +2,11 @@
   <section id="treatments" class="section treatments">
     <div class="container">
       <div class="treatments__header text-center">
-        <span class="section-label">Featured Treatments</span>
-        <h2 class="section-title">Popular Procedures</h2>
+        <span class="section-label">Popular Procedures</span>
+        <h2 class="section-title">Featured Treatments</h2>
         <div class="divider divider--center"></div>
         <p class="section-subtitle">
-          Discover our most sought-after treatments, each delivering
-          visible, lasting results with minimal downtime.
+          Explore our most requested treatments — each one designed for visible results with minimal disruption to your daily life.
         </p>
       </div>
 
@@ -24,14 +23,10 @@
       </div>
 
       <div class="treatments__grid">
-        <article
-          v-for="treatment in filteredTreatments"
-          :key="treatment.name"
-          class="treatments__card card"
-        >
-          <div class="treatments__card-badge">{{ treatment.category }}</div>
+        <article v-for="treatment in filteredTreatments" :key="treatment.name" class="treatments__card">
           <div class="treatments__card-visual">
             <span class="treatments__card-icon">{{ treatment.icon }}</span>
+            <span class="treatments__card-badge">{{ treatment.category }}</span>
           </div>
           <div class="treatments__card-body">
             <h3 class="treatments__card-name">{{ treatment.name }}</h3>
@@ -50,13 +45,7 @@
                 <span class="treatments__card-info-value treatments__card-price">{{ treatment.price }}</span>
               </div>
             </div>
-            <a
-              href="#booking"
-              class="btn btn--ghost treatments__card-btn"
-              @click.prevent="scrollTo('booking')"
-            >
-              Book Treatment
-            </a>
+            <a href="#booking" class="btn btn--ghost treatments__card-btn" @click.prevent="scrollTo('booking')"> Book This Treatment </a>
           </div>
         </article>
       </div>
@@ -65,114 +54,125 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed } from "vue";
 
-const activeTab = ref('all')
+const activeTab = ref("all");
 
 const tabs = [
-  { id: 'all', label: 'All Treatments' },
-  { id: 'face', label: 'Face' },
-  { id: 'body', label: 'Body' },
-  { id: 'laser', label: 'Laser' }
-]
+  { id: "all", label: "All" },
+  { id: "face", label: "Face" },
+  { id: "body", label: "Body" },
+  { id: "laser", label: "Laser" },
+  { id: "wellness", label: "Wellness" },
+];
 
 const treatments = [
   {
-    category: 'Face',
-    icon: '💉',
-    name: 'Botox Wrinkle Relaxer',
-    desc: 'Smooth fine lines and dynamic wrinkles for a refreshed, youthful appearance.',
-    duration: '30 min',
-    downtime: 'None',
-    price: '฿4,500',
-    tab: 'face'
+    category: "Face",
+    icon: "💉",
+    name: "Botox Wrinkle Relaxer",
+    desc: "Smooth dynamic wrinkles and fine lines for a naturally refreshed look.",
+    duration: "30 min",
+    downtime: "None",
+    price: "฿4,500",
+    tab: "face",
   },
   {
-    category: 'Face',
-    icon: '✨',
-    name: 'HydraFacial MD',
-    desc: 'Deep cleanse, exfoliate, and hydrate for instantly radiant, glowing skin.',
-    duration: '60 min',
-    downtime: 'None',
-    price: '฿3,200',
-    tab: 'face'
+    category: "Face",
+    icon: "🌿",
+    name: "HydraFacial MD",
+    desc: "Deep cleanse, extract and infuse — instantly radiant, hydrated skin.",
+    duration: "60 min",
+    downtime: "None",
+    price: "฿3,200",
+    tab: "face",
   },
   {
-    category: 'Face',
-    icon: '🌟',
-    name: 'Dermal Fillers',
-    desc: 'Restore lost volume and sculpt facial contours with precision placement.',
-    duration: '45 min',
-    downtime: '1-2 days',
-    price: '฿6,000',
-    tab: 'face'
+    category: "Face",
+    icon: "✨",
+    name: "Dermal Fillers",
+    desc: "Restore volume and sculpt facial contours with expert precision.",
+    duration: "45 min",
+    downtime: "1–2 days",
+    price: "฿6,000",
+    tab: "face",
   },
   {
-    category: 'Laser',
-    icon: '⚡',
-    name: 'Laser Hair Removal',
-    desc: 'Permanent reduction of unwanted hair with advanced diode laser technology.',
-    duration: '30-90 min',
-    downtime: 'None',
-    price: '฿1,500',
-    tab: 'laser'
+    category: "Laser",
+    icon: "⚡",
+    name: "Laser Hair Removal",
+    desc: "Permanent hair reduction across all skin types with diode laser.",
+    duration: "30–90 min",
+    downtime: "None",
+    price: "฿1,500",
+    tab: "laser",
   },
   {
-    category: 'Laser',
-    icon: '🔬',
-    name: 'Picosecond Laser',
-    desc: 'Target pigmentation, melasma, and tattoo removal with ultra-fast pulses.',
-    duration: '30 min',
-    downtime: '2-3 days',
-    price: '฿5,000',
-    tab: 'laser'
+    category: "Laser",
+    icon: "🔬",
+    name: "Picosecond Laser",
+    desc: "Target pigmentation, melasma and uneven tone with ultra-fast pulses.",
+    duration: "30 min",
+    downtime: "2–3 days",
+    price: "฿5,000",
+    tab: "laser",
   },
   {
-    category: 'Body',
-    icon: '🧊',
-    name: 'CoolSculpting',
-    desc: 'Non-surgical fat reduction that freezes and eliminates stubborn fat cells.',
-    duration: '35-60 min',
-    downtime: 'None',
-    price: '฿8,000',
-    tab: 'body'
+    category: "Body",
+    icon: "🧊",
+    name: "CoolSculpting Elite",
+    desc: "Freeze and eliminate stubborn fat cells without surgery or downtime.",
+    duration: "35–60 min",
+    downtime: "None",
+    price: "฿8,000",
+    tab: "body",
   },
   {
-    category: 'Body',
-    icon: '🌿',
-    name: 'RF Body Sculpting',
-    desc: 'Tighten skin and reduce cellulite with radiofrequency energy therapy.',
-    duration: '60 min',
-    downtime: 'None',
-    price: '฿3,500',
-    tab: 'body'
+    category: "Body",
+    icon: "🫁",
+    name: "RF Body Sculpting",
+    desc: "Tighten skin and smooth cellulite with radiofrequency energy.",
+    duration: "60 min",
+    downtime: "None",
+    price: "฿3,500",
+    tab: "body",
   },
   {
-    category: 'Face',
-    icon: '🧬',
-    name: 'PRP Facial (Vampire)',
-    desc: 'Harness your own growth factors for natural skin rejuvenation and repair.',
-    duration: '75 min',
-    downtime: '1 day',
-    price: '฿7,500',
-    tab: 'face'
-  }
-]
+    category: "Wellness",
+    icon: "🧬",
+    name: "PRP Regenerative Facial",
+    desc: "Your own growth factors, activated to repair and renew skin deeply.",
+    duration: "75 min",
+    downtime: "1 day",
+    price: "฿7,500",
+    tab: "wellness",
+  },
+  {
+    category: "Wellness",
+    icon: "💊",
+    name: "IV Nutrient Drip",
+    desc: "Replenish essential vitamins and minerals for energy, glow and immunity.",
+    duration: "45 min",
+    downtime: "None",
+    price: "฿2,800",
+    tab: "wellness",
+  },
+];
 
 const filteredTreatments = computed(() => {
-  if (activeTab.value === 'all') return treatments
-  return treatments.filter(t => t.tab === activeTab.value)
-})
+  if (activeTab.value === "all") return treatments;
+  return treatments.filter((t) => t.tab === activeTab.value);
+});
 
 function scrollTo(id: string) {
-  const el = document.getElementById(id)
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
 }
 </script>
 
 <style scoped>
 .treatments {
-  background-color: var(--main-color-1);
+  background-color: var(--main-color-2);
 }
 
 .treatments__header {
@@ -189,16 +189,16 @@ function scrollTo(id: string) {
 }
 
 .treatments__tab {
-  padding: 10px var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-lg);
   font-size: var(--font-sm);
-  font-weight: 400;
+  font-weight: 500;
   color: var(--font-color2);
-  background-color: transparent;
-  border: 1px solid var(--main-color-4);
+  background-color: var(--main-color-1);
+  border: 1px solid var(--main-color-3);
   border-radius: var(--radius-pill);
   cursor: pointer;
   transition: all var(--transition-normal);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
 }
 
 .treatments__tab:hover {
@@ -214,23 +214,40 @@ function scrollTo(id: string) {
 
 .treatments__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-lg);
 }
 
 .treatments__card {
-  background-color: var(--main-color-1);
+  background-color: var(--font-color-white);
   border: 1px solid var(--main-color-3);
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: all var(--transition-normal);
-  position: relative;
 }
 
 .treatments__card:hover {
-  border-color: var(--accent-secondary);
+  border-color: var(--accent-primary);
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
+}
+
+.treatments__card-visual {
+  height: 200px;
+  background: linear-gradient(145deg, var(--main-color-2) 0%, var(--main-color-3) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: var(--spacing-lg);
+}
+
+.treatments__card-icon {
+  background-color: var(--main-color-3);
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 0;
 }
 
 .treatments__card-badge {
@@ -238,24 +255,12 @@ function scrollTo(id: string) {
   top: var(--spacing-md);
   right: var(--spacing-md);
   padding: 4px var(--spacing-sm);
-  background-color: var(--main-color-3);
-  border-radius: var(--radius-xs);
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: var(--radius-pill);
   font-size: var(--font-xs);
-  color: var(--font-color2);
-  font-weight: 500;
+  color: var(--accent-primary);
+  font-weight: 600;
   letter-spacing: 0.5px;
-}
-
-.treatments__card-visual {
-  height: 140px;
-  background: linear-gradient(145deg, var(--main-color-2) 0%, var(--main-color-3) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.treatments__card-icon {
-  font-size: 52px;
 }
 
 .treatments__card-body {
@@ -268,14 +273,15 @@ function scrollTo(id: string) {
 .treatments__card-name {
   font-family: var(--font-display);
   font-size: var(--font-lg);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--font-color1);
+  line-height: 1.25;
 }
 
 .treatments__card-desc {
   font-size: var(--font-sm);
   color: var(--font-color2);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .treatments__card-meta {
@@ -313,19 +319,12 @@ function scrollTo(id: string) {
 .treatments__card-btn {
   margin-top: var(--spacing-sm);
   width: 100%;
-  padding: 10px;
+  padding: var(--spacing-sm);
   font-size: var(--font-xs);
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-@media (max-width: 1200px) {
-  .treatments__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .treatments__grid {
     grid-template-columns: repeat(2, 1fr);
   }

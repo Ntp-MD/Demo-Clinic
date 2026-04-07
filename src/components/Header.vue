@@ -1,32 +1,26 @@
 <template>
   <header class="header" :class="{ 'header--scrolled': isScrolled }">
     <div class="container header__inner">
-      <a href="#home" class="header__logo" @click.prevent="scrollTo('home')">
-        <span class="header__logo-mark">✦</span>
-        <span class="header__logo-name">Lumière</span>
+      <a href="#home" class="header__logo" @click.prevent="handleNavClick('home')">
+        <div class="header__logo-icon">
+          <span class="header__logo-leaf">✿</span>
+        </div>
+        <div class="header__logo-text">
+          <span class="header__logo-name">Demo</span>
+          <span class="header__logo-sub">Clinic</span>
+        </div>
       </a>
 
       <nav class="header__nav" :class="{ 'header__nav--open': menuOpen }">
         <ul class="header__nav-list">
           <li v-for="item in navItems" :key="item.id">
-            <a
-              class="header__nav-link"
-              :href="`#${item.id}`"
-              @click.prevent="handleNavClick(item.id)"
-            >{{ item.label }}</a>
+            <a class="header__nav-link" :href="`#${item.id}`" @click.prevent="handleNavClick(item.id)">{{ item.label }}</a>
           </li>
         </ul>
-        <a href="#booking" class="btn btn--primary header__nav-cta" @click.prevent="handleNavClick('booking')">
-          Book Now
-        </a>
+        <a href="#booking" class="btn btn--primary header__nav-cta" @click.prevent="handleNavClick('booking')"> Book a Visit </a>
       </nav>
 
-      <button
-        class="header__burger"
-        :class="{ 'header__burger--active': menuOpen }"
-        aria-label="Toggle navigation"
-        @click="menuOpen = !menuOpen"
-      >
+      <button class="header__burger" :class="{ 'header__burger--active': menuOpen }" aria-label="Toggle navigation" @click="menuOpen = !menuOpen">
         <span class="header__burger-line"></span>
         <span class="header__burger-line"></span>
         <span class="header__burger-line"></span>
@@ -36,35 +30,45 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref } from "vue";
+import { useSmoothScroll } from "../composables/useSmoothScroll";
 
-const isScrolled = ref(false)
-const menuOpen = ref(false)
+const menuOpen = ref(false);
+const { isScrolled, scrollToElement } = useSmoothScroll();
 
+/**
+ * Navigation items configuration
+ */
 const navItems = [
-  { id: 'services', label: 'Services' },
-  { id: 'about', label: 'About' },
-  { id: 'treatments', label: 'Treatments' },
-  { id: 'testimonials', label: 'Reviews' },
-  { id: 'booking', label: 'Contact' }
-]
+  { id: "services", label: "Services" },
+  { id: "about", label: "About Us" },
+  { id: "treatments", label: "Treatments" },
+  { id: "testimonials", label: "Reviews" },
+  { id: "booking", label: "Contact" },
+];
 
-function scrollTo(id: string) {
-  const el = document.getElementById(id)
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
-  menuOpen.value = false
-}
+/**
+ * Toggle mobile menu state
+ */
+const toggleMenu = () => {
+  menuOpen.value = !menuOpen.value;
+};
 
-function handleNavClick(id: string) {
-  scrollTo(id)
-}
+/**
+ * Close mobile menu
+ */
+const closeMenu = () => {
+  menuOpen.value = false;
+};
 
-function onScroll() {
-  isScrolled.value = window.scrollY > 40
-}
-
-onMounted(() => window.addEventListener('scroll', onScroll))
-onUnmounted(() => window.removeEventListener('scroll', onScroll))
+/**
+ * Handle navigation click with smooth scroll
+ * @param targetId - Target element ID
+ */
+const handleNavClick = (targetId: string) => {
+  closeMenu();
+  scrollToElement(targetId);
+};
 </script>
 
 <style scoped>
@@ -73,9 +77,12 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
-  transition: background-color var(--transition-normal), box-shadow var(--transition-normal);
+  z-index: 10;
   background-color: transparent;
+  will-change: background-color, box-shadow;
+  transition:
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .header--scrolled {
@@ -93,22 +100,48 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 .header__logo {
   display: flex;
   align-items: center;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-sm);
   text-decoration: none;
 }
 
-.header__logo-mark {
-  font-size: var(--font-xl);
-  color: var(--accent-primary);
+.header__logo-icon {
+  width: 36px;
+  height: 36px;
+  background-color: var(--accent-primary);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.header__logo-leaf {
+  font-size: var(--font-md);
+  color: var(--font-color-white);
   line-height: 1;
+}
+
+.header__logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
 }
 
 .header__logo-name {
   font-family: var(--font-display);
-  font-size: var(--font-xl);
-  font-weight: 500;
+  font-size: var(--font-lg);
+  font-weight: 700;
   color: var(--font-color1);
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+}
+
+.header__logo-sub {
+  font-family: var(--font-body);
+  font-size: var(--font-xs);
+  font-weight: 400;
+  color: var(--accent-primary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .header__nav {
@@ -128,19 +161,20 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   font-size: var(--font-sm);
   font-weight: 400;
   color: var(--font-color1);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   position: relative;
   padding-bottom: 3px;
 }
 
 .header__nav-link::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0;
-  height: 1px;
+  height: 2px;
   background-color: var(--accent-primary);
+  border-radius: var(--radius-xs);
   transition: width var(--transition-normal);
 }
 
@@ -153,10 +187,9 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 }
 
 .header__nav-cta {
-  padding: 10px var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-lg);
   font-size: var(--font-xs);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .header__burger {
@@ -174,6 +207,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   width: 24px;
   height: 2px;
   background-color: var(--font-color1);
+  border-radius: var(--radius-xs);
   transition: all var(--transition-normal);
 }
 
@@ -196,7 +230,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 
   .header__nav {
     position: fixed;
-    top: var(--header-height);
+    top: calc(var(--header-height) - 1px);
     left: 0;
     width: 100%;
     flex-direction: column;
@@ -205,12 +239,15 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
     padding: var(--spacing-lg);
     gap: var(--spacing-md);
     box-shadow: var(--shadow-md);
-    transform: translateY(-110%);
-    transition: transform var(--transition-slow);
+    transform: translateX(-100vw);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 80vh;
+    z-index: 9;
+    will-change: transform;
   }
 
   .header__nav--open {
-    transform: translateY(0);
+    transform: translateX(0);
   }
 
   .header__nav-list {

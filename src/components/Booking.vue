@@ -3,12 +3,11 @@
     <div class="container booking__inner">
       <div class="booking__info animate-slide-left">
         <span class="section-label">Get In Touch</span>
-        <h2 class="section-title">Book Your<br /><em>Consultation</em></h2>
+        <h2 class="section-title">Book Your<br /><em class="booking__title-em">Wellness Visit</em></h2>
         <div class="divider"></div>
         <p class="booking__desc">
-          Every transformation begins with a conversation.
-          Book your complimentary consultation and let our specialists
-          create a personalised plan just for you.
+          Every journey to better health starts with a single step. Book your free consultation and let our specialists create a personalised wellness
+          plan designed around you.
         </p>
 
         <div class="booking__contact-list">
@@ -34,56 +33,29 @@
 
       <div class="booking__form-wrap animate-slide-right animate-delay-2">
         <div class="booking__form-card card">
-          <h3 class="booking__form-title">Request an Appointment</h3>
-          <p class="booking__form-subtitle">We will confirm within 24 hours</p>
+          <h3 class="booking__form-title">Schedule Your Visit</h3>
+          <p class="booking__form-subtitle">Our team will confirm within 24 hours</p>
 
           <form class="booking__form" @submit.prevent="handleSubmit">
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label" for="booking-firstname">First Name</label>
-                <input
-                  id="booking-firstname"
-                  v-model="form.firstName"
-                  type="text"
-                  class="form-input"
-                  placeholder="Siriporn"
-                  required
-                />
+                <input id="booking-firstname" v-model="form.firstName" type="text" class="form-input" placeholder="Your first name" required />
               </div>
               <div class="form-group">
                 <label class="form-label" for="booking-lastname">Last Name</label>
-                <input
-                  id="booking-lastname"
-                  v-model="form.lastName"
-                  type="text"
-                  class="form-input"
-                  placeholder="Kaewprasert"
-                  required
-                />
+                <input id="booking-lastname" v-model="form.lastName" type="text" class="form-input" placeholder="Your last name" required />
               </div>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="booking-email">Email Address</label>
-              <input
-                id="booking-email"
-                v-model="form.email"
-                type="email"
-                class="form-input"
-                placeholder="you@example.com"
-                required
-              />
+              <input id="booking-email" v-model="form.email" type="email" class="form-input" placeholder="you@example.com" required />
             </div>
 
             <div class="form-group">
               <label class="form-label" for="booking-phone">Phone Number</label>
-              <input
-                id="booking-phone"
-                v-model="form.phone"
-                type="tel"
-                class="form-input"
-                placeholder="+66 81 234 5678"
-              />
+              <input id="booking-phone" v-model="form.phone" type="tel" class="form-input" placeholder="+66 81 234 5678" />
             </div>
 
             <div class="form-group">
@@ -98,12 +70,7 @@
 
             <div class="form-group">
               <label class="form-label" for="booking-date">Preferred Date</label>
-              <input
-                id="booking-date"
-                v-model="form.date"
-                type="date"
-                class="form-input"
-              />
+              <input id="booking-date" v-model="form.date" type="date" class="form-input" />
             </div>
 
             <div class="form-group">
@@ -112,14 +79,14 @@
                 id="booking-message"
                 v-model="form.message"
                 class="form-textarea"
-                placeholder="Tell us about your skin concerns or goals..."
+                placeholder="Tell us about your health concerns or wellness goals..."
                 rows="3"
               ></textarea>
             </div>
 
             <button type="submit" class="btn btn--primary booking__form-submit" :disabled="submitted">
-              <span v-if="!submitted">Confirm Booking Request</span>
-              <span v-else>✓ Request Sent!</span>
+              <span v-if="!submitted">Send Booking Request</span>
+              <span v-else>✓ Request Received!</span>
             </button>
           </form>
         </div>
@@ -129,64 +96,65 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, reactive } from "vue";
 
-const submitted = ref(false)
+const submitted = ref(false);
 
 const form = reactive({
-  firstName: '',
-  lastName: '',
-  email: '',
-  phone: '',
-  treatment: '',
-  date: '',
-  message: ''
-})
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  treatment: "",
+  date: "",
+  message: "",
+});
 
 const contacts = [
-  { icon: '📍', label: 'Address', value: '88 Sukhumvit Soi 11, Watthana, Bangkok 10110' },
-  { icon: '📞', label: 'Phone', value: '+66 2 123 4567' },
-  { icon: '✉️', label: 'Email', value: 'hello@lumiere-clinic.com' },
-  { icon: '💬', label: 'LINE Official', value: '@lumiereclinic' }
-]
+  { icon: "📍", label: "Address", value: "42 Rama IX Rd, Huai Khwang, Bangkok 10310" },
+  { icon: "📞", label: "Phone", value: "+66 2 987 6543" },
+  { icon: "✉️", label: "Email", value: "care@Demo-clinic.com" },
+  { icon: "💬", label: "LINE Official", value: "@Democare" },
+];
 
 const openingHours = [
-  { days: 'Monday – Friday', time: '09:00 – 20:00' },
-  { days: 'Saturday', time: '09:00 – 18:00' },
-  { days: 'Sunday', time: '10:00 – 16:00' }
-]
+  { days: "Monday – Friday", time: "09:00 – 20:00" },
+  { days: "Saturday", time: "09:00 – 18:00" },
+  { days: "Sunday", time: "10:00 – 16:00" },
+];
 
 const treatmentOptions = [
-  'Botox / Wrinkle Relaxer',
-  'Dermal Fillers',
-  'HydraFacial',
-  'Laser Hair Removal',
-  'Picosecond Laser',
-  'CoolSculpting',
-  'PRP Facial',
-  'RF Body Sculpting',
-  'Skin Consultation',
-  'Other'
-]
+  "Botox / Wrinkle Relaxer",
+  "Dermal Fillers",
+  "HydraFacial MD",
+  "Laser Hair Removal",
+  "Picosecond Laser",
+  "CoolSculpting Elite",
+  "PRP Regenerative Facial",
+  "RF Body Sculpting",
+  "IV Nutrient Drip",
+  "General Wellness Consultation",
+  "Other",
+];
 
 function handleSubmit() {
-  submitted.value = true
+  submitted.value = true;
   setTimeout(() => {
-    submitted.value = false
-    form.firstName = ''
-    form.lastName = ''
-    form.email = ''
-    form.phone = ''
-    form.treatment = ''
-    form.date = ''
-    form.message = ''
-  }, 3000)
+    submitted.value = false;
+    form.firstName = "";
+    form.lastName = "";
+    form.email = "";
+    form.phone = "";
+    form.treatment = "";
+    form.date = "";
+    form.message = "";
+  }, 3000);
 }
 </script>
 
 <style scoped>
 .booking {
-  background-color: var(--main-color-1);
+  background-color: var(--main-color-2);
 }
 
 .booking__inner {
@@ -219,7 +187,7 @@ function handleSubmit() {
 .booking__contact-icon {
   width: 40px;
   height: 40px;
-  background-color: var(--main-color-3);
+  background-color: var(--main-color-1);
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
@@ -243,7 +211,7 @@ function handleSubmit() {
 }
 
 .booking__hours {
-  background-color: var(--main-color-2);
+  background-color: var(--main-color-1);
   border-radius: var(--radius-md);
   padding: var(--spacing-lg);
 }
@@ -280,17 +248,22 @@ function handleSubmit() {
 }
 
 .booking__form-card {
-  background-color: var(--main-color-1);
+  background-color: var(--font-color-white);
   border: 1px solid var(--main-color-3);
   border-radius: var(--radius-xl);
   padding: var(--spacing-xl);
   box-shadow: var(--shadow-lg);
 }
 
+.booking__title-em {
+  font-style: italic;
+  color: var(--accent-primary);
+}
+
 .booking__form-title {
   font-family: var(--font-display);
   font-size: var(--font-2xl);
-  font-weight: 400;
+  font-weight: 600;
   color: var(--font-color1);
   margin-bottom: var(--spacing-xs);
 }

@@ -3,10 +3,10 @@
     <div class="container">
       <div class="services__header text-center">
         <span class="section-label">What We Offer</span>
-        <h2 class="section-title">Our Core Services</h2>
+        <h2 class="section-title">Comprehensive Wellness Services</h2>
         <div class="divider divider--center"></div>
         <p class="section-subtitle">
-          From subtle enhancements to transformative procedures, every treatment is tailored to bring out your best self.
+          From preventive health to advanced aesthetics, our team provides personalised care designed around your unique wellness goals.
         </p>
       </div>
 
@@ -14,23 +14,26 @@
         <article
           v-for="(service, index) in services"
           :key="service.title"
-          class="services__card card hover-lift"
+          class="services__card hover-lift"
           :class="`animate-fade-up animate-delay-${String(index + 1)}`"
         >
-          <div class="services__card-icon">
-            <span>{{ service.icon }}</span>
+          <div class="services__card-top">
+            <div class="services__card-icon" :style="`background-color: ${service.color}`">
+              <span>{{ service.icon }}</span>
+            </div>
+            <span class="services__card-tag">{{ service.tag }}</span>
           </div>
           <div class="services__card-body">
             <h3 class="services__card-title">{{ service.title }}</h3>
             <p class="services__card-desc">{{ service.desc }}</p>
             <ul class="services__card-list">
               <li v-for="item in service.items" :key="item" class="services__card-item">
-                <span class="services__card-dot">✦</span>
+                <span class="services__card-check">✓</span>
                 {{ item }}
               </li>
             </ul>
-            <a href="#booking" class="services__card-link" @click.prevent="scrollTo('booking')"> Learn More → </a>
           </div>
+          <a href="#booking" class="services__card-link" @click.prevent="scrollTo('booking')"> Get Started → </a>
         </article>
       </div>
     </div>
@@ -40,40 +43,52 @@
 <script setup lang="ts">
 const services = [
   {
-    icon: "✨",
-    title: "Skin Rejuvenation",
-    desc: "Restore radiance and youthfulness with our advanced skin treatments using cutting-edge technology.",
-    items: ["HydraFacial", "Chemical Peels", "Microneedling", "LED Therapy"],
+    icon: "🌿",
+    color: "rgba(148, 166, 132, 0.15)",
+    tag: "Skin",
+    title: "Skin Health & Rejuvenation",
+    desc: "Restore clarity, tone and texture with clinically validated skin treatments.",
+    items: ["HydraFacial MD", "Chemical Peels", "Microneedling", "LED Phototherapy"],
   },
   {
-    icon: "💆",
-    title: "Injectable Treatments",
-    desc: "Precisely administered injectables to smooth, sculpt and enhance your natural features.",
-    items: ["Botox & Dysport", "Dermal Fillers", "Lip Augmentation", "Jawline Contouring"],
+    icon: "�",
+    color: "rgba(175, 143, 157, 0.15)",
+    tag: "Injectables",
+    title: "Injectable Aesthetics",
+    desc: "Subtle, natural enhancements administered by board-certified specialists.",
+    items: ["Botox & Dysport", "Dermal Fillers", "Lip Enhancement", "Jawline Sculpting"],
   },
   {
     icon: "⚡",
-    title: "Laser & Light",
-    desc: "State-of-the-art laser technology to target specific skin concerns with precision.",
-    items: ["Laser Hair Removal", "Pigmentation Correction", "Skin Tightening", "Vascular Therapy"],
-  },
-  {
-    icon: "🌿",
-    title: "Body Contouring",
-    desc: "Non-surgical body shaping treatments designed to sculpt and define your silhouette.",
-    items: ["CoolSculpting", "Radiofrequency", "Cavitation", "Lymphatic Drainage"],
+    color: "rgba(201, 149, 74, 0.12)",
+    tag: "Laser",
+    title: "Laser & Energy Therapy",
+    desc: "Targeted, precise laser solutions for hair, pigmentation and skin renewal.",
+    items: ["Laser Hair Removal", "Pigmentation Therapy", "Skin Tightening", "Vascular Care"],
   },
   {
     icon: "🧬",
-    title: "Anti-Aging Therapy",
-    desc: "Holistic anti-aging protocols combining the latest science with personalised care.",
-    items: ["PRP Therapy", "Exosome Treatment", "Collagen Stimulation", "IV Drip Therapy"],
+    color: "rgba(106, 170, 120, 0.12)",
+    tag: "Advanced",
+    title: "Regenerative Medicine",
+    desc: "Harness your body's own healing power for lasting, natural restoration.",
+    items: ["PRP Therapy", "Exosome Treatments", "IV Nutrient Drip", "Collagen Induction"],
+  },
+  {
+    icon: "�",
+    color: "rgba(122, 143, 108, 0.12)",
+    tag: "Body",
+    title: "Body Contouring",
+    desc: "Non-invasive sculpting to help you achieve and maintain your ideal shape.",
+    items: ["CoolSculpting", "Radiofrequency RF", "Ultrasound Cavitation", "Lymphatic Drainage"],
   },
   {
     icon: "🌸",
-    title: "Wellness & Spa",
-    desc: "Luxurious wellness treatments that nourish your skin, body and mind in harmony.",
-    items: ["Signature Facials", "Aromatherapy Massage", "Body Wraps", "Scalp Treatments"],
+    color: "rgba(175, 143, 157, 0.12)",
+    tag: "Wellness",
+    title: "Holistic Wellness",
+    desc: "Mind-body treatments that restore balance, calm and inner radiance.",
+    items: ["Wellness Consultation", "Aromatherapy Facial", "Scalp Revitalisation", "Stress Relief Program"],
   },
 ];
 
@@ -99,7 +114,7 @@ function scrollTo(id: string) {
 }
 
 .services__card {
-  background-color: var(--main-color-1);
+  background-color: var(--font-color-white);
   border: 1px solid var(--main-color-3);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
@@ -110,20 +125,36 @@ function scrollTo(id: string) {
 }
 
 .services__card:hover {
-  border-color: var(--accent-secondary);
-  background-color: var(--main-color-2);
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.services__card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .services__card-icon {
-  width: 56px;
-  height: 56px;
-  background-color: var(--main-color-3);
+  width: 52px;
+  height: 52px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: var(--font-xl);
   flex-shrink: 0;
+}
+
+.services__card-tag {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  color: var(--accent-primary);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px var(--spacing-sm);
+  background-color: var(--main-color-2);
+  border-radius: var(--radius-pill);
 }
 
 .services__card-body {
@@ -135,15 +166,16 @@ function scrollTo(id: string) {
 
 .services__card-title {
   font-family: var(--font-display);
-  font-size: var(--font-xl);
-  font-weight: 500;
+  font-size: var(--font-lg);
+  font-weight: 600;
   color: var(--font-color1);
+  line-height: 1.25;
 }
 
 .services__card-desc {
   font-size: var(--font-sm);
   color: var(--font-color2);
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 .services__card-list {
@@ -162,9 +194,17 @@ function scrollTo(id: string) {
   color: var(--font-color2);
 }
 
-.services__card-dot {
-  font-size: 8px;
-  color: var(--accent-primary);
+.services__card-check {
+  width: 18px;
+  height: 18px;
+  background-color: var(--accent-primary);
+  color: var(--font-color-white);
+  border-radius: var(--radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
   flex-shrink: 0;
 }
 
@@ -174,13 +214,12 @@ function scrollTo(id: string) {
   font-size: var(--font-sm);
   font-weight: 500;
   color: var(--accent-primary);
-  margin-top: auto;
   padding-top: var(--spacing-md);
   border-top: 1px solid var(--main-color-3);
+  gap: var(--spacing-xs);
   transition:
     gap var(--transition-normal),
     color var(--transition-normal);
-  gap: var(--spacing-xs);
 }
 
 .services__card-link:hover {

@@ -1,41 +1,17 @@
 <template>
   <section id="about" class="section about">
     <div class="container about__inner">
-      <div class="about__visual animate-slide-left">
-        <div class="about__image-grid">
-          <div class="about__image about__image--main">
-            <div class="about__image-placeholder about__image-placeholder--1">
-              <span class="about__image-icon">🌸</span>
-            </div>
-          </div>
-          <div class="about__image about__image--accent">
-            <div class="about__image-placeholder about__image-placeholder--2">
-              <span class="about__image-icon">✨</span>
-            </div>
-          </div>
-          <div class="about__award">
-            <span class="about__award-icon">🏆</span>
-            <div>
-              <p class="about__award-title">Best Aesthetic Clinic</p>
-              <p class="about__award-year">2023 & 2024</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="about__content animate-slide-right animate-delay-2">
-        <span class="section-label">About Lumière</span>
-        <h2 class="section-title">Where Science Meets<br /><em>Artistry</em></h2>
+      <div class="about__content animate-slide-left">
+        <span class="section-label">About Demo</span>
+        <h2 class="section-title">Care That Goes<br /><em class="about__title-em">Deeper</em></h2>
         <div class="divider"></div>
         <p class="about__text">
-          Founded in 2014, Lumière Aesthetic Clinic has been at the forefront of
-          premium aesthetic medicine. Our team of board-certified specialists combines
-          the latest medical advancements with an artist's eye for natural beauty.
+          Founded in 2012, Demo Clinic was built on a simple belief: true wellness begins when science, compassion and personalised attention come
+          together. Our multidisciplinary team brings medical expertise and genuine care to every visit.
         </p>
         <p class="about__text">
-          We believe true beauty enhancement means working with your natural features,
-          not against them. Every treatment plan is personalised, every procedure
-          performed with precision and care.
+          Whether you're here for preventive health, skin transformation, or simply to feel your best — we listen first and treat second. You are more
+          than a patient; you are a partner in your own wellbeing.
         </p>
 
         <div class="about__features">
@@ -48,9 +24,32 @@
           </div>
         </div>
 
-        <a href="#booking" class="btn btn--primary about__cta" @click.prevent="scrollTo('booking')">
-          Meet Our Team
-        </a>
+        <div class="about__actions">
+          <a href="#booking" class="btn btn--primary" @click.prevent="scrollTo('booking')"> Book a Consultation </a>
+          <a href="#treatments" class="btn btn--outline" @click.prevent="scrollTo('treatments')"> Our Treatments </a>
+        </div>
+      </div>
+
+      <div class="about__visual animate-slide-right animate-delay-2">
+        <div class="about__panel-grid">
+          <div class="about__panel about__panel--main">
+            <span class="about__panel-icon">🌿</span>
+            <p class="about__panel-label">Wellness First</p>
+          </div>
+          <div class="about__panel about__panel--stat">
+            <span class="about__panel-num">12+</span>
+            <span class="about__panel-desc">Years Serving Patients</span>
+          </div>
+          <div class="about__panel about__panel--accent">
+            <span class="about__panel-icon">🏅</span>
+            <p class="about__panel-label">Top Rated Clinic</p>
+            <p class="about__panel-meta">2022 · 2023 · 2024</p>
+          </div>
+          <div class="about__panel about__panel--stat">
+            <span class="about__panel-num">30+</span>
+            <span class="about__panel-desc">Specialist Doctors</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -59,25 +58,25 @@
 <script setup lang="ts">
 const features = [
   {
-    icon: '🎓',
-    title: 'Board-Certified Specialists',
-    desc: 'All practitioners hold advanced medical qualifications and continuous education.'
+    icon: "🎓",
+    title: "Board-Certified Medical Team",
+    desc: "Every practitioner holds advanced certifications and commits to ongoing education.",
   },
   {
-    icon: '🔬',
-    title: 'Cutting-Edge Technology',
-    desc: 'We invest in the latest FDA-approved devices and techniques.'
+    icon: "🔬",
+    title: "Evidence-Based Treatments",
+    desc: "We use only FDA-cleared devices and clinically proven protocols.",
   },
   {
-    icon: '💛',
-    title: 'Personalised Care',
-    desc: 'Every treatment plan is uniquely designed for your skin type and goals.'
-  }
-]
+    icon: "🤝",
+    title: "Patient-Centred Approach",
+    desc: "Your goals, concerns and comfort shape every decision we make together.",
+  },
+];
 
 function scrollTo(id: string) {
-  const el = document.getElementById(id)
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
 }
 </script>
 
@@ -93,76 +92,9 @@ function scrollTo(id: string) {
   gap: var(--spacing-2xl);
 }
 
-.about__visual {
-  position: relative;
-}
-
-.about__image-grid {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-md);
-}
-
-.about__image--main {
-  grid-column: 1 / -1;
-}
-
-.about__image-placeholder {
-  border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-}
-
-.about__image-placeholder--1 {
-  height: 320px;
-  background: linear-gradient(145deg, var(--main-color-3) 0%, var(--main-color-4) 100%);
-}
-
-.about__image-placeholder--2 {
-  height: 200px;
-  background: linear-gradient(145deg, var(--accent-secondary) 0%, var(--accent-base) 100%);
-}
-
-.about__image-icon {
-  font-size: 48px;
-  opacity: 0.6;
-}
-
-.about__award {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-md);
-  background-color: var(--main-color-1);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-md);
-  box-shadow: var(--shadow-lg);
-  height: 200px;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-}
-
-.about__award-icon {
-  font-size: var(--font-2xl);
-}
-
-.about__award-title {
-  font-family: var(--font-display);
-  font-size: var(--font-md);
-  font-weight: 500;
-  color: var(--font-color1);
-  line-height: 1.3;
-}
-
-.about__award-year {
-  font-size: var(--font-xs);
+.about__title-em {
+  font-style: italic;
   color: var(--accent-primary);
-  font-weight: 500;
-  letter-spacing: 1px;
 }
 
 .about__content {
@@ -194,19 +126,20 @@ function scrollTo(id: string) {
 .about__feature-icon {
   width: 44px;
   height: 44px;
-  background-color: var(--main-color-3);
+  background-color: var(--main-color-1);
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: var(--font-lg);
   flex-shrink: 0;
+  box-shadow: var(--shadow-xs);
 }
 
 .about__feature-title {
   font-family: var(--font-display);
-  font-size: var(--font-lg);
-  font-weight: 500;
+  font-size: var(--font-md);
+  font-weight: 600;
   color: var(--font-color1);
   margin-bottom: 4px;
 }
@@ -214,11 +147,102 @@ function scrollTo(id: string) {
 .about__feature-desc {
   font-size: var(--font-sm);
   color: var(--font-color2);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-.about__cta {
-  align-self: flex-start;
+.about__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.about__visual {
+  position: relative;
+}
+
+.about__panel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+/* Mobile: Single column layout */
+@media (max-width: 768px) {
+  .about__panel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about__panel {
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--spacing-sm);
+}
+
+.about__panel--main {
+  background: linear-gradient(145deg, var(--accent-primary) 0%, var(--accent-base) 100%);
+  grid-column: 1 / -1;
+  padding: var(--spacing-2xl);
+}
+
+.about__panel--main .about__panel-icon {
+  font-size: 52px;
+}
+
+.about__panel--main .about__panel-label {
+  font-family: var(--font-display);
+  font-size: var(--font-xl);
+  font-weight: 600;
+  color: var(--font-color-white);
+  letter-spacing: 0.5px;
+}
+
+.about__panel--stat {
+  background-color: var(--main-color-1);
+  box-shadow: var(--shadow-md);
+}
+
+.about__panel-num {
+  font-family: var(--font-display);
+  font-size: var(--font-2xl);
+  font-weight: 700;
+  color: var(--accent-primary);
+  line-height: 1;
+}
+
+.about__panel-desc {
+  font-size: var(--font-xs);
+  color: var(--font-color2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.about__panel--accent {
+  background-color: var(--main-color-3);
+}
+
+.about__panel-icon {
+  font-size: var(--font-2xl);
+}
+
+.about__panel-label {
+  font-family: var(--font-display);
+  font-size: var(--font-md);
+  font-weight: 600;
+  color: var(--font-color1);
+}
+
+.about__panel-meta {
+  font-size: var(--font-xs);
+  color: var(--accent-primary);
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 
 @media (max-width: 1024px) {
@@ -227,14 +251,20 @@ function scrollTo(id: string) {
   }
 
   .about__visual {
-    max-width: 500px;
+    max-width: 100%;
     margin: 0 auto;
     width: 100%;
   }
 
-  .about__cta {
-    align-self: stretch;
+  .about__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .about__actions .btn {
     justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
   }
 }
 </style>
