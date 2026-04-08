@@ -1,7 +1,7 @@
 <template>
   <section id="services" class="section services">
     <div class="container">
-      <div class="services__header text-center">
+      <div class="services__header">
         <span class="section-label">What We Offer</span>
         <h2 class="section-title">Comprehensive Wellness Services</h2>
         <div class="divider divider--center"></div>
@@ -43,64 +43,69 @@
 <script setup lang="ts">
 const services = [
   {
-    icon: '🌿',
-    color: 'rgba(148, 166, 132, 0.15)',
-    tag: 'Skin',
-    title: 'Skin Health & Rejuvenation',
-    desc: 'Restore clarity, tone and texture with clinically validated skin treatments.',
-    items: ['HydraFacial MD', 'Chemical Peels', 'Microneedling', 'LED Phototherapy'],
+    icon: "🌿",
+    color: "rgba(148, 166, 132, 0.15)",
+    tag: "Skin",
+    title: "Skin Health & Rejuvenation",
+    desc: "Restore clarity, tone and texture with clinically validated skin treatments.",
+    items: ["HydraFacial MD", "Chemical Peels", "Microneedling", "LED Phototherapy"],
   },
   {
-    icon: '💉',
-    color: 'rgba(175, 143, 157, 0.15)',
-    tag: 'Injectables',
-    title: 'Injectable Aesthetics',
-    desc: 'Subtle, natural enhancements administered by board-certified specialists.',
-    items: ['Botox & Dysport', 'Dermal Fillers', 'Lip Enhancement', 'Jawline Sculpting'],
+    icon: "💉",
+    color: "rgba(175, 143, 157, 0.15)",
+    tag: "Injectables",
+    title: "Injectable Aesthetics",
+    desc: "Subtle, natural enhancements administered by board-certified specialists.",
+    items: ["Botox & Dysport", "Dermal Fillers", "Lip Enhancement", "Jawline Sculpting"],
   },
   {
-    icon: '⚡',
-    color: 'rgba(201, 149, 74, 0.12)',
-    tag: 'Laser',
-    title: 'Laser & Energy Therapy',
-    desc: 'Targeted, precise laser solutions for hair, pigmentation and skin renewal.',
-    items: ['Laser Hair Removal', 'Pigmentation Therapy', 'Skin Tightening', 'Vascular Care'],
+    icon: "⚡",
+    color: "rgba(201, 149, 74, 0.12)",
+    tag: "Laser",
+    title: "Laser & Energy Therapy",
+    desc: "Targeted, precise laser solutions for hair, pigmentation and skin renewal.",
+    items: ["Laser Hair Removal", "Pigmentation Therapy", "Skin Tightening", "Vascular Care"],
   },
   {
-    icon: '🧬',
-    color: 'rgba(106, 170, 120, 0.12)',
-    tag: 'Advanced',
-    title: 'Regenerative Medicine',
-    desc: 'Harness your body\'s own healing power for lasting, natural restoration.',
-    items: ['PRP Therapy', 'Exosome Treatments', 'IV Nutrient Drip', 'Collagen Induction'],
+    icon: "🧬",
+    color: "rgba(106, 170, 120, 0.12)",
+    tag: "Advanced",
+    title: "Regenerative Medicine",
+    desc: "Harness your body's own healing power for lasting, natural restoration.",
+    items: ["PRP Therapy", "Exosome Treatments", "IV Nutrient Drip", "Collagen Induction"],
   },
   {
-    icon: '🏋️',
-    color: 'rgba(122, 143, 108, 0.12)',
-    tag: 'Body',
-    title: 'Body Contouring',
-    desc: 'Non-invasive sculpting to help you achieve and maintain your ideal shape.',
-    items: ['CoolSculpting', 'Radiofrequency RF', 'Ultrasound Cavitation', 'Lymphatic Drainage'],
+    icon: "🏋️",
+    color: "rgba(122, 143, 108, 0.12)",
+    tag: "Body",
+    title: "Body Contouring",
+    desc: "Non-invasive sculpting to help you achieve and maintain your ideal shape.",
+    items: ["CoolSculpting", "Radiofrequency RF", "Ultrasound Cavitation", "Lymphatic Drainage"],
   },
   {
-    icon: '🌸',
-    color: 'rgba(175, 143, 157, 0.12)',
-    tag: 'Wellness',
-    title: 'Holistic Wellness',
-    desc: 'Mind-body treatments that restore balance, calm and inner radiance.',
-    items: ['Wellness Consultation', 'Aromatherapy Facial', 'Scalp Revitalisation', 'Stress Relief Program'],
+    icon: "🌸",
+    color: "rgba(175, 143, 157, 0.12)",
+    tag: "Wellness",
+    title: "Holistic Wellness",
+    desc: "Mind-body treatments that restore balance, calm and inner radiance.",
+    items: ["Wellness Consultation", "Aromatherapy Facial", "Scalp Revitalisation", "Stress Relief Program"],
   },
-]
+];
 
 function scrollTo(id: string) {
-  const el = document.getElementById(id)
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
 }
 </script>
 
 <style scoped>
-.services { background-color: var(--main-color-1); }
-.services__header { margin-bottom: var(--spacing-2xl); }
+.services {
+  background-color: var(--main-color-1);
+}
+.services__header {
+  margin-bottom: var(--spacing-2xl);
+  text-align: center;
+}
 
 .services__grid {
   display: grid;
@@ -198,7 +203,7 @@ function scrollTo(id: string) {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: var(--font-xs);
   font-weight: 700;
   flex-shrink: 0;
 }
@@ -212,7 +217,9 @@ function scrollTo(id: string) {
   padding-top: var(--spacing-md);
   border-top: 1px solid var(--main-color-3);
   gap: var(--spacing-xs);
-  transition: gap var(--transition-normal), color var(--transition-normal);
+  transition:
+    gap var(--transition-normal),
+    color var(--transition-normal);
 }
 
 .services__card-link:hover {
@@ -221,10 +228,14 @@ function scrollTo(id: string) {
 }
 
 @media (max-width: 1024px) {
-  .services__grid { grid-template-columns: repeat(2, 1fr); }
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 640px) {
-  .services__grid { grid-template-columns: 1fr; }
+  .services__grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <section id="testimonials" class="section testimonials">
     <div class="container">
-      <div class="testimonials__header text-center">
+      <div class="testimonials__header">
         <span class="section-label">Client Stories</span>
         <h2 class="section-title">Heard From Our Community</h2>
         <div class="divider divider--center"></div>
@@ -54,23 +54,64 @@
 
 <script setup lang="ts">
 const testimonials = [
-  { treatment: 'Botox', quote: 'The doctor truly listened. My results look so natural — no frozen face, just a refreshed, rested version of me. The whole experience was calm and professional.', name: 'Siriporn K.', meta: 'Client since 2021' },
-  { treatment: 'HydraFacial', quote: 'One session and my skin transformed. Brighter, smoother and my pores are barely visible. I have been coming back every month and my confidence has soared.', name: 'Natthaporn W.', meta: 'Client since 2022' },
-  { treatment: 'Laser Hair Removal', quote: 'Six comfortable sessions and I am completely free. The team made every appointment feel easy and the results are everything I hoped for — and permanent.', name: 'Malinee P.', meta: 'Client since 2020' },
-  { treatment: 'Dermal Fillers', quote: 'I was nervous but the doctor walked me through every step. My lips look full and natural — exactly what I wanted. The care here is genuinely outstanding.', name: 'Rossarin T.', meta: 'Client since 2023' },
-  { treatment: 'IV Drip Therapy', quote: 'I started IV drips for fatigue and my energy changed completely. The clinic is pristine, the staff are warm and I feel the results every single week.', name: 'Jarunya B.', meta: 'Client since 2022' },
-  { treatment: 'PRP Facial', quote: 'I was skeptical at first. Now after three sessions, the improvement in my skin texture and glow is undeniable. Demo has earned my complete trust.', name: 'Chanika L.', meta: 'Client since 2023' },
-]
+  {
+    treatment: "Botox",
+    quote:
+      "The doctor truly listened. My results look so natural — no frozen face, just a refreshed, rested version of me. The whole experience was calm and professional.",
+    name: "Siriporn K.",
+    meta: "Client since 2021",
+  },
+  {
+    treatment: "HydraFacial",
+    quote:
+      "One session and my skin transformed. Brighter, smoother and my pores are barely visible. I have been coming back every month and my confidence has soared.",
+    name: "Natthaporn W.",
+    meta: "Client since 2022",
+  },
+  {
+    treatment: "Laser Hair Removal",
+    quote:
+      "Six comfortable sessions and I am completely free. The team made every appointment feel easy and the results are everything I hoped for — and permanent.",
+    name: "Malinee P.",
+    meta: "Client since 2020",
+  },
+  {
+    treatment: "Dermal Fillers",
+    quote:
+      "I was nervous but the doctor walked me through every step. My lips look full and natural — exactly what I wanted. The care here is genuinely outstanding.",
+    name: "Rossarin T.",
+    meta: "Client since 2023",
+  },
+  {
+    treatment: "IV Drip Therapy",
+    quote:
+      "I started IV drips for fatigue and my energy changed completely. The clinic is pristine, the staff are warm and I feel the results every single week.",
+    name: "Jarunya B.",
+    meta: "Client since 2022",
+  },
+  {
+    treatment: "PRP Facial",
+    quote:
+      "I was skeptical at first. Now after three sessions, the improvement in my skin texture and glow is undeniable. Demo has earned my complete trust.",
+    name: "Chanika L.",
+    meta: "Client since 2023",
+  },
+];
 
 function scrollTo(id: string) {
-  const el = document.getElementById(id)
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
 }
 </script>
 
 <style scoped>
-.testimonials { background-color: var(--main-color-1); }
-.testimonials__header { margin-bottom: var(--spacing-2xl); }
+.testimonials {
+  background-color: var(--main-color-1);
+}
+.testimonials__header {
+  margin-bottom: var(--spacing-2xl);
+  text-align: center;
+}
 
 .testimonials__grid {
   display: grid;
@@ -104,8 +145,14 @@ function scrollTo(id: string) {
   gap: var(--spacing-sm);
 }
 
-.testimonials__stars { display: flex; gap: 2px; }
-.testimonials__star { color: var(--accent-warning); font-size: var(--font-md); }
+.testimonials__stars {
+  display: flex;
+  gap: 2px;
+}
+.testimonials__star {
+  color: var(--accent-warning);
+  font-size: var(--font-md);
+}
 
 .testimonials__treatment-tag {
   display: inline-block;
@@ -150,8 +197,15 @@ function scrollTo(id: string) {
   flex-shrink: 0;
 }
 
-.testimonials__author-name { font-size: var(--font-sm); font-weight: 600; color: var(--font-color1); }
-.testimonials__author-meta { font-size: var(--font-xs); color: var(--font-color3); }
+.testimonials__author-name {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--font-color1);
+}
+.testimonials__author-meta {
+  font-size: var(--font-xs);
+  color: var(--font-color3);
+}
 
 .testimonials__bottom {
   display: flex;
@@ -163,8 +217,16 @@ function scrollTo(id: string) {
   border-top: 1px solid var(--main-color-3);
 }
 
-.testimonials__score-wrap { display: flex; flex-direction: column; gap: var(--spacing-md); }
-.testimonials__score { display: flex; align-items: center; gap: var(--spacing-md); }
+.testimonials__score-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+.testimonials__score {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
 
 .testimonials__score-num {
   font-family: var(--font-display);
@@ -174,10 +236,21 @@ function scrollTo(id: string) {
   line-height: 1;
 }
 
-.testimonials__score-right { display: flex; flex-direction: column; gap: var(--spacing-xs); }
-.testimonials__score-label { font-size: var(--font-sm); color: var(--font-color2); }
+.testimonials__score-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+.testimonials__score-label {
+  font-size: var(--font-sm);
+  color: var(--font-color2);
+}
 
-.testimonials__platforms { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+.testimonials__platforms {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
 
 .testimonials__platform-badge {
   padding: 6px var(--spacing-md);
@@ -190,11 +263,18 @@ function scrollTo(id: string) {
 }
 
 @media (max-width: 1024px) {
-  .testimonials__grid { grid-template-columns: repeat(2, 1fr); }
-  .testimonials__bottom { flex-direction: column; align-items: center; }
+  .testimonials__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .testimonials__bottom {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media (max-width: 640px) {
-  .testimonials__grid { grid-template-columns: 1fr; }
+  .testimonials__grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

@@ -213,7 +213,7 @@ function scrollTo(id: string) {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
+  font-size: var(--font-xs);
   font-weight: 700;
   flex-shrink: 0;
 }
@@ -282,7 +282,7 @@ function scrollTo(id: string) {
 }
 
 .hero__card-icon {
-  font-size: 36px;
+  font-size: var(--font-2xl);
   color: var(--accent-primary);
 }
 

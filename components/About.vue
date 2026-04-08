@@ -58,30 +58,32 @@
 <script setup lang="ts">
 const features = [
   {
-    icon: '🎓',
-    title: 'Board-Certified Medical Team',
-    desc: 'Every practitioner holds advanced certifications and commits to ongoing education.',
+    icon: "🎓",
+    title: "Board-Certified Medical Team",
+    desc: "Every practitioner holds advanced certifications and commits to ongoing education.",
   },
   {
-    icon: '🔬',
-    title: 'Evidence-Based Treatments',
-    desc: 'We use only FDA-cleared devices and clinically proven protocols.',
+    icon: "🔬",
+    title: "Evidence-Based Treatments",
+    desc: "We use only FDA-cleared devices and clinically proven protocols.",
   },
   {
-    icon: '🤝',
-    title: 'Patient-Centred Approach',
-    desc: 'Your goals, concerns and comfort shape every decision we make together.',
+    icon: "🤝",
+    title: "Patient-Centred Approach",
+    desc: "Your goals, concerns and comfort shape every decision we make together.",
   },
-]
+];
 
 function scrollTo(id: string) {
-  const el = document.getElementById(id)
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
 }
 </script>
 
 <style scoped>
-.about { background-color: var(--main-color-2); }
+.about {
+  background-color: var(--main-color-2);
+}
 
 .about__inner {
   display: grid;
@@ -90,7 +92,10 @@ function scrollTo(id: string) {
   gap: var(--spacing-2xl);
 }
 
-.about__title-em { font-style: italic; color: var(--accent-primary); }
+.about__title-em {
+  font-style: italic;
+  color: var(--accent-primary);
+}
 
 .about__content {
   display: flex;
@@ -98,7 +103,11 @@ function scrollTo(id: string) {
   gap: var(--spacing-md);
 }
 
-.about__text { font-size: var(--font-md); color: var(--font-color2); line-height: 1.8; }
+.about__text {
+  font-size: var(--font-md);
+  color: var(--font-color2);
+  line-height: 1.8;
+}
 
 .about__features {
   display: flex;
@@ -108,7 +117,11 @@ function scrollTo(id: string) {
   margin-bottom: var(--spacing-md);
 }
 
-.about__feature { display: flex; align-items: flex-start; gap: var(--spacing-md); }
+.about__feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
 
 .about__feature-icon {
   width: 44px;
@@ -131,11 +144,22 @@ function scrollTo(id: string) {
   margin-bottom: 4px;
 }
 
-.about__feature-desc { font-size: var(--font-sm); color: var(--font-color2); line-height: 1.65; }
+.about__feature-desc {
+  font-size: var(--font-sm);
+  color: var(--font-color2);
+  line-height: 1.65;
+}
 
-.about__actions { display: flex; align-items: center; gap: var(--spacing-md); flex-wrap: wrap; }
+.about__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
 
-.about__visual { position: relative; }
+.about__visual {
+  position: relative;
+}
 
 .about__panel-grid {
   display: grid;
@@ -144,7 +168,9 @@ function scrollTo(id: string) {
 }
 
 @media (max-width: 768px) {
-  .about__panel-grid { grid-template-columns: 1fr; }
+  .about__panel-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .about__panel {
@@ -164,7 +190,9 @@ function scrollTo(id: string) {
   padding: var(--spacing-2xl);
 }
 
-.about__panel--main .about__panel-icon { font-size: 52px; }
+.about__panel--main .about__panel-icon {
+  font-size: var(--font-3xl);
+}
 
 .about__panel--main .about__panel-label {
   font-family: var(--font-display);
@@ -174,7 +202,10 @@ function scrollTo(id: string) {
   letter-spacing: 0.5px;
 }
 
-.about__panel--stat { background-color: var(--main-color-1); box-shadow: var(--shadow-md); }
+.about__panel--stat {
+  background-color: var(--main-color-1);
+  box-shadow: var(--shadow-md);
+}
 
 .about__panel-num {
   font-family: var(--font-display);
@@ -184,20 +215,52 @@ function scrollTo(id: string) {
   line-height: 1;
 }
 
-.about__panel-desc { font-size: var(--font-xs); color: var(--font-color2); text-transform: uppercase; letter-spacing: 1px; }
+.about__panel-desc {
+  font-size: var(--font-xs);
+  color: var(--font-color2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-.about__panel--accent { background-color: var(--main-color-3); }
+.about__panel--accent {
+  background-color: var(--main-color-3);
+}
 
-.about__panel-icon { font-size: var(--font-2xl); }
+.about__panel-icon {
+  font-size: var(--font-2xl);
+}
 
-.about__panel-label { font-family: var(--font-display); font-size: var(--font-md); font-weight: 600; color: var(--font-color1); }
+.about__panel-label {
+  font-family: var(--font-display);
+  font-size: var(--font-md);
+  font-weight: 600;
+  color: var(--font-color1);
+}
 
-.about__panel-meta { font-size: var(--font-xs); color: var(--accent-primary); font-weight: 500; letter-spacing: 1px; }
+.about__panel-meta {
+  font-size: var(--font-xs);
+  color: var(--accent-primary);
+  font-weight: 500;
+  letter-spacing: 1px;
+}
 
 @media (max-width: 1024px) {
-  .about__inner { grid-template-columns: 1fr; }
-  .about__visual { max-width: 100%; margin: 0 auto; width: 100%; }
-  .about__actions { flex-direction: column; align-items: stretch; }
-  .about__actions .btn { justify-content: center; width: fit-content; margin: 0 auto; }
+  .about__inner {
+    grid-template-columns: 1fr;
+  }
+  .about__visual {
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .about__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .about__actions .btn {
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
+  }
 }
 </style>
